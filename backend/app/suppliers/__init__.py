@@ -1,0 +1,1 @@
+# MediStock - suppliers module
