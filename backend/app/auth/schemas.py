@@ -10,7 +10,7 @@ from pydantic import BaseModel, EmailStr
 class LoginRequest(BaseModel):
     """Login request body."""
 
-    email: EmailStr
+    email: str
     password: str
 
 

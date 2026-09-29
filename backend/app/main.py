@@ -22,6 +22,17 @@ from app.core.config import settings
 from app.db.base import Base
 from app.db.session import SessionLocal, engine
 
+# Import models so Base.metadata contains all tables
+import app.users.models  # noqa: F401
+import app.medicines.models  # noqa: F401
+import app.suppliers.models  # noqa: F401
+import app.inventory.models  # noqa: F401
+import app.purchases.models  # noqa: F401
+import app.sales.models  # noqa: F401
+import app.returns.models  # noqa: F401
+import app.alerts.models  # noqa: F401
+import app.common.audit  # noqa: F401
+
 
 @asynccontextmanager
 async def lifespan(application: FastAPI):

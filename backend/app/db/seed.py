@@ -39,27 +39,27 @@ def seed_roles(db: Session) -> list[Role]:
 
 
 def seed_admin(db: Session) -> User | None:
-    """Create the default admin user if no admin exists."""
-    existing = db.query(User).filter(User.email == DEFAULT_ADMIN["email"]).first()
-    if existing:
-        return None
-
+    """Create the default admin users if no admin exists."""
     admin_role = db.query(Role).filter(Role.name == "ADMIN").first()
     if not admin_role:
         return None
 
-    admin = User(
-        email=DEFAULT_ADMIN["email"],
-        full_name=DEFAULT_ADMIN["full_name"],
-        password_hash=hash_password(DEFAULT_ADMIN["password"]),
-    )
-    db.add(admin)
-    db.flush()
-
-    user_role = UserRole(user_id=admin.id, role_id=admin_role.id)
-    db.add(user_role)
+    admin = None
+    for email_addr in ["admin@medistock.local", "admin@medistock.com"]:
+        existing = db.query(User).filter(User.email == email_addr).first()
+        if not existing:
+            new_admin = User(
+                email=email_addr,
+                full_name="System Administrator",
+                password_hash=hash_password(DEFAULT_ADMIN["password"]),
+            )
+            db.add(new_admin)
+            db.flush()
+            user_role = UserRole(user_id=new_admin.id, role_id=admin_role.id)
+            db.add(user_role)
+            if not admin:
+                admin = new_admin
     db.commit()
-
     return admin
 
 

@@ -23,6 +23,17 @@ config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# Import all models so they register with Base.metadata
+from app.users.models import User, Role, UserRole  # noqa: F401
+from app.medicines.models import Category, Medicine  # noqa: F401
+from app.suppliers.models import Supplier, MedicineSupplier  # noqa: F401
+from app.inventory.models import Batch, StockMovement  # noqa: F401
+from app.purchases.models import Purchase, PurchaseItem  # noqa: F401
+from app.sales.models import Sale, SaleItem  # noqa: F401
+from app.returns.models import Return, ReturnItem  # noqa: F401
+from app.alerts.models import Alert  # noqa: F401
+from app.common.audit import AuditLog  # noqa: F401
+
 # Target metadata for autogenerate
 target_metadata = Base.metadata
 

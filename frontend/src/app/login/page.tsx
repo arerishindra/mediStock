@@ -118,22 +118,30 @@ export default function LoginPage() {
             <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mb-3">
               One-Click Demo Credentials
             </span>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="grid grid-cols-3 gap-2 text-xs">
               <button
                 type="button"
                 onClick={() => fillCredentials("admin@medistock.local", "Admin@123")}
-                className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-700/50 hover:border-brand-500/60 text-left transition"
+                className="p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 hover:border-brand-500/60 text-left transition"
               >
-                <div className="font-semibold text-brand-300">Admin</div>
-                <div className="text-[11px] text-slate-500">Full Access</div>
+                <div className="font-semibold text-brand-300 text-[11px]">Admin (.local)</div>
+                <div className="text-[10px] text-slate-500">System Admin</div>
+              </button>
+              <button
+                type="button"
+                onClick={() => fillCredentials("admin@medistock.com", "Admin@123")}
+                className="p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 hover:border-brand-500/60 text-left transition"
+              >
+                <div className="font-semibold text-brand-300 text-[11px]">Admin (.com)</div>
+                <div className="text-[10px] text-slate-500">System Admin</div>
               </button>
               <button
                 type="button"
                 onClick={() => fillCredentials("admin@test.com", "Admin@123")}
-                className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-700/50 hover:border-brand-500/60 text-left transition"
+                className="p-2 rounded-lg bg-slate-900/60 border border-slate-700/50 hover:border-brand-500/60 text-left transition"
               >
-                <div className="font-semibold text-brand-300">Test Account</div>
-                <div className="text-[11px] text-slate-500">Test Suite Admin</div>
+                <div className="font-semibold text-brand-300 text-[11px]">Test Admin</div>
+                <div className="text-[10px] text-slate-500">Test Suite</div>
               </button>
             </div>
           </div>

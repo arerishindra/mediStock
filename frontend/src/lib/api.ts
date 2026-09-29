@@ -27,7 +27,16 @@ export async function apiFetch<T = any>(endpoint: string, options: FetchOptions 
   const json = await res.json().catch(() => null);
 
   if (!res.ok) {
-    const errorMsg = json?.error?.message || json?.detail || res.statusText || "Request failed";
+    let errorMsg = res.statusText || "Request failed";
+    if (json?.error?.message) {
+      errorMsg = json.error.message;
+    } else if (Array.isArray(json?.detail)) {
+      errorMsg = json.detail.map((d: any) => d.msg || JSON.stringify(d)).join(", ");
+    } else if (typeof json?.detail === "string") {
+      errorMsg = json.detail;
+    } else if (json?.detail?.message) {
+      errorMsg = json.detail.message;
+    }
     throw new Error(errorMsg);
   }
 
