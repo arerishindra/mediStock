@@ -444,7 +444,7 @@ uvicorn app.main:app --reload --port 8000
 Backend:
 
 ```text
-http://localhost:8000
+http://localhost:8012
 ```
 
 ### API Documentation
@@ -452,13 +452,13 @@ http://localhost:8000
 Swagger UI:
 
 ```text
-http://localhost:8000/api/docs
+http://localhost:8012/api/docs
 ```
 
 Health Check:
 
 ```text
-http://localhost:8000/api/v1/health
+http://localhost:8012/api/v1/health
 ```
 
 ---
@@ -494,13 +494,13 @@ The recommended way to run the complete production-style stack is Docker Compose
 │       Docker Compose        │
 ├─────────────────────────────┤
 │                             │
-│  Next.js       :3000        │
+│  Next.js       :3012        │
 │       │                     │
 │       ▼                     │
-│  FastAPI       :8000        │
+│  FastAPI       :8012        │
 │       │                     │
 │       ▼                     │
-│  MySQL         :3306        │
+│  MySQL         :3309        │
 │                             │
 └─────────────────────────────┘
 ```
@@ -677,11 +677,11 @@ MediStock can be deployed using the following architecture:
           │                       │
           ▼                       ▼
       Next.js                  FastAPI
-       :3000                    :8000
+       :3012                    :8012
                                   │
                                   ▼
                                MySQL 8
-                                :3306
+                                :3309
 ```
 
 Docker Compose provides a reproducible environment for running the complete application stack.
