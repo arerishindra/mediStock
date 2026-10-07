@@ -424,7 +424,7 @@ SQLite is supported for local development, so MySQL is **not required** to get s
 ## 1. Clone the Repository
 
 ```powershell
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/arerishindra/mediStock
 
 cd MediStock
 ```
