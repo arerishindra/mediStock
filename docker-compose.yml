@@ -11,7 +11,7 @@ services:
       MYSQL_USER: ${MYSQL_USER:-medistock}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -37,7 +37,7 @@ services:
       FRONTEND_URL: http://localhost:3000
       DEBUG: "false"
     ports:
-      - "8000:8000"
+      - "8012:8000"
     depends_on:
       db:
         condition: service_healthy
@@ -53,7 +53,7 @@ services:
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
     ports:
-      - "3000:3000"
+      - "3012:3000"
     depends_on:
       - backend
 
